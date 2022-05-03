@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "494797286177",
+    "project_id": "matching-pets",
+    "storage_bucket": "matching-pets.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494797286177:android:d71c8bc566bd7ace3a2c60",
+        "android_client_info": {
+          "package_name": "host.exp.exponent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494797286177-rv55fd36ssgameohhg2cruincr8mcokq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "host.exp.exponent",
+            "certificate_hash": "75407b4a4cd52ff2c77fdb0ec52833fb9e553dc8"
+          }
+        },
+        {
+          "client_id": "494797286177-jbl213u856r84hhbof4h12ectdpvc4pd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAr_kgt5VGBHSvrPSY-G5TEXoV0s6GdKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494797286177-jbl213u856r84hhbof4h12ectdpvc4pd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
