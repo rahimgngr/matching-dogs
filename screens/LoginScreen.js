@@ -6,7 +6,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
-
+import { Ionicons, Entypo } from "@expo/vector-icons";
 import React, { useLayoutEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import tw from "tailwind-rn";
@@ -30,15 +30,32 @@ const LoginScreen = () => {
       >
         <TouchableOpacity
           style={[
-            tw("absolute bottom-20 w-52 bg-white p-4 rounded-2xl"),
+            tw("absolute bottom-20 w-52 bg-white p-3 rounded-2xl"),
             { marginHorizontal: "25%" },
           ]}
           onPress={signInWithGoogle}
         >
           <Text style={tw("font-semibold text-center")}>
-            {loading
-              ? "Loading..."
-              : "Sign in & find a perfect match for your dog!"}
+            {loading ? (
+              "Loading..."
+            ) : (
+              <Ionicons name="logo-google" size={30} color="#FF5864" />
+            )}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[
+            tw("absolute bottom-5 w-52 bg-white p-3 rounded-2xl"),
+            { marginHorizontal: "25%" },
+          ]}
+          onPress={() => navigation.navigate("LoginEmail")}
+        >
+          <Text style={tw("font-semibold text-center")}>
+            {loading ? (
+              "Loading..."
+            ) : (
+              <Ionicons name="ios-mail" size={30} color="#FF5864" />
+            )}
           </Text>
         </TouchableOpacity>
       </ImageBackground>

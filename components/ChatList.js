@@ -16,8 +16,10 @@ const ChatList = () => {
         collection(db, "matches"),
         where("usersMatched", "array-contains", user.uid)
       ),
-      (snapshot) =>
-        setMatches(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
+      (snapshot) => {
+        setMatches(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+        console.log(snapshot);
+      }
     );
   }, [user]);
 

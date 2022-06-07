@@ -36,10 +36,13 @@ const HomeScreen = () => {
   const { user, logout } = useAuth();
   const [profiles, setProfiles] = useState([]);
   const swipeRef = useRef(null);
+  const [flag, setFlag] = useState(1);
+  const batches = [];
 
   useLayoutEffect(
     () =>
       onSnapshot(doc(db, "users", user.uid), (snapshot) => {
+        // console.log(snapshot);
         if (!snapshot.exists()) {
           navigation.navigate("Modal");
         }
@@ -49,6 +52,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     let unsub;
+    // const batch = ids.splice(0, 10);
 
     const fetchCards = async () => {
       const passes = await getDocs(
@@ -68,6 +72,7 @@ const HomeScreen = () => {
           where("id", "not-in", [...passedUserIds, ...swipedUserIds])
         ),
         (snapshot) => {
+          console.log(user);
           setProfiles(
             snapshot.docs
               .filter((doc) => doc.id !== user.uid)
@@ -79,6 +84,9 @@ const HomeScreen = () => {
         }
       );
     };
+    {
+      // console.log(profiles);
+    }
 
     fetchCards();
     return unsub;
@@ -133,16 +141,17 @@ const HomeScreen = () => {
       }
     );
   };
-
+  // console.log(user);
   return (
     <SafeAreaView style={tw("flex-1 mt-5")}>
       {/* header */}
       <View style={tw("flex-row items-center justify-between px-5")}>
         <TouchableOpacity onPress={logout}>
-          <Image
+          {/* <Image
             style={tw("h-10 w-10 rounded-full")}
             source={{ uri: user.photoURL }}
-          />
+          /> */}
+          <Ionicons name="exit" size={30} color="#FF5864" />
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate("Modal")}>
@@ -156,6 +165,7 @@ const HomeScreen = () => {
       {/* header-end */}
 
       {/* cards */}
+
       <View style={tw("flex-1 -mt-6")}>
         <Swiper
           ref={swipeRef}
@@ -230,7 +240,9 @@ const HomeScreen = () => {
                     <Text style={tw("text-xl font-bold")}>
                       {card.displayName}
                     </Text>
-                    <Text>{card.job}</Text>
+                    <Text>
+                      {card.city} şehrinde yaşıyor. {card.color} renginde.
+                    </Text>
                   </View>
                   <Text style={tw("text-2xl font-bold")}>{card.age}</Text>
                 </View>
@@ -242,14 +254,6 @@ const HomeScreen = () => {
                 )}
               >
                 <Text style={tw("font-bold pb-5")}>No more profiles.</Text>
-                <Image
-                  style={tw("h-20 w-full")}
-                  height={100}
-                  width={100}
-                  source={{
-                    uri: "https://cdn.shopify.com/s/files/1/1061/1924/products/Crying_Face_Emoji_large.png?v=1571606037",
-                  }}
-                />
               </View>
             )
           }

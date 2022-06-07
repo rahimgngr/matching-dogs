@@ -4,9 +4,11 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithCredential,
+  signInWithEmailAndPassword,
   signOut,
 } from "@firebase/auth";
 import { auth } from "../firebase";
+// import auth from '@react-native-firebase/auth'
 
 const AuthContext = createContext({});
 
@@ -37,6 +39,25 @@ export const AuthProvider = ({ children }) => {
       }),
     []
   );
+
+  // const update = {
+  //   displayName: 'Alias',
+  //   photoURL: 'https://my-cdn.com/assets/user/123.png',
+  // };
+
+  // await firebase.auth().currentUser.updateProfile(update);
+
+  const signIn = async (userEmail, userPassword) => {
+    setLoading(true);
+    try {
+      await signInWithEmailAndPassword(auth, userEmail, userPassword);
+    } catch (e) {
+      console.error(e.message);
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const logout = () => {
     setLoading(true);
@@ -75,6 +96,7 @@ export const AuthProvider = ({ children }) => {
       error,
       signInWithGoogle,
       logout,
+      signIn,
     }),
     [user, loading, error]
   );
