@@ -13,10 +13,7 @@ import { auth } from "../firebase";
 const AuthContext = createContext({});
 
 const config = {
-  androidClientId:
-    "494797286177-rv55fd36ssgameohhg2cruincr8mcokq.apps.googleusercontent.com",
-  scopes: ["profile", "email"],
-  permissions: ["public_profile", "email", "gender", "location"],
+  
 };
 
 export const AuthProvider = ({ children }) => {
