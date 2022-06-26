@@ -8,12 +8,7 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAUMrzxWjpxHUy_v9pQVdxMutKJ_ijxoDw",
-  authDomain: "matching-pets.firebaseapp.com",
-  projectId: "matching-pets",
-  storageBucket: "matching-pets.appspot.com",
-  messagingSenderId: "494797286177",
-  appId: "1:494797286177:web:48002c21cdd2b2bf3a2c60",
+  
 };
 
 // Initialize Firebase
